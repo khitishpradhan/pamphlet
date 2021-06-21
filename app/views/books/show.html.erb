@@ -1,19 +1,19 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 d-flex flex-column justify-content-center align-items-center">
-			<% if (@book['covers']) %>
-				<%= image_tag "http://covers.openlibrary.org/b/id/#{@book['covers'][0]}-L.jpg", class: "book_image" %>
+			<% if (@book["covers"]) %>
+				<%= image_tag "http://covers.openlibrary.org/b/id/#{@book["covers"][0]}-L.jpg", class: "book_image" %>
 			<% else %>
 				<%= image_tag "index.png", class: "book_image" %>
 			<% end %>	
-			<%= link_to "Preview", "/", class: "btn btn-secondary preview_btn" %>
+			<%= link_to "Preview", "#{@preview}", class: "btn btn-secondary preview_btn" %>
 		</div>
 		<div class="col-sm-9">
-			<h1><%= @book['title'] %></h1>
+			<h1><%= @book["title"] %></h1>
 			<h6>by <%= @author %>  </h6>
 
-			<h2 class="text-secondary">Overview</h2>
-			<%= @book['description'] %>
+			<h2 class="text-secondary text-wrap">Overview</h2>
+			<%= @book["description"] %>
 		</div>
 	</div>
 	<div class="row">
@@ -21,8 +21,22 @@
 			
 
 		</div>
-		<div class="col-sm-9"><h2>Reviews</h1></div>
-	
+		<div class="col-sm-9 border border-secondary">
+			<h2>Reviews</h1>
+			<%= render partial: "review_form" %>
+			<%= render partial: "review" %>
+
+
+			<%= @reviews.each do |review| %>
+			
+				<p><%= review.review %></P>
+				
+			<% end %>
+
+		</div>
+
+
+
 	</div>
 
 </div>

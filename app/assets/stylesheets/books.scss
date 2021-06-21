@@ -19,3 +19,20 @@
     margin-top: 20px;
 
 }
+
+.review_comment {
+    width: 500px;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    .avatar_name {
+        align-items: center;
+        
+    }
+
+  }
