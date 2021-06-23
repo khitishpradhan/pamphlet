@@ -2,7 +2,7 @@
 
 <div class="container ">
 
-<% if(@books.length != 0) %>
+<% if (@books.length != 0) %>
 
     <h1>Showing results for "<%= @query %>" </h1>
 
@@ -13,9 +13,9 @@
 <% end %>
 
 
-    <div class="row align-items-center">
+    <div class="row">
         
-        <%= render partial:'card', locals: { books_data: @books}%>
+        <%= render partial: "card", locals: { books_data: @books } %>
         
     </div>
 </div>
