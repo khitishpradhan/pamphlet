@@ -1,13 +1,15 @@
 class ReviewsController < ApplicationController
   def new
-    @review = Review.new
+    @review = Review.new(review_params)
 
-    render plain: @review
+    @review.save
+
+    redirect_to request.referrer
   end
 
-  def index
-    @reviews = Review.all
+  private
 
-    render plain: @reviews
+  def review_params
+    params.require(:review).permit(:review, :rating, :book_id)
   end
 end

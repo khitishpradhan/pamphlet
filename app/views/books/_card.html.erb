@@ -4,7 +4,7 @@
 <div class="col-lg-4 p-4 d-flex align-items-stretch ">
     <div class="card shadow" style="width: 18rem;">
 			<% if (book["cover_i"]) %>
-            <%= image_tag "http://covers.openlibrary.org/b/id/#{book["cover_i"]}-L.jpg", class: "card-img-top" %>
+                <%= image_tag "http://covers.openlibrary.org/b/id/#{book["cover_i"]}-L.jpg", class: "card-img-top" %>
 			<% else %>
 				<%= image_tag "index.png", class: "book_image" %>
 			<% end %>	

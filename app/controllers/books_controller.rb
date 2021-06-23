@@ -12,9 +12,10 @@ class BooksController < ApplicationController
   end
 
   def show
+    @id = params[:id]
+
     @review = Review.new
 
-    @id = params[:id]
     @isbn = params[:isbn]
     @author_url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{@isbn}&jscmd=details&format=json"
     @url = "https://openlibrary.org/works/#{@id}.json"
@@ -27,5 +28,10 @@ class BooksController < ApplicationController
     @preview = JSON.parse(@author_response)["ISBN:#{@isbn}"]["preview_url"]
 
     @reviews = Review.all
+
+    @suggestion_url = "http://openlibrary.org/search.json?author=#{@author}&limit=2"
+    @suggestion_uri = URI(@suggestion_url)
+    @suggestion_response = Net::HTTP.get(@suggestion_uri)
+    @suggestions = JSON.parse(@suggestion_response)["docs"]
   end
 end

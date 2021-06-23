@@ -5,8 +5,6 @@ Rails.application.routes.draw do
 
   post "/reviews", to: "reviews#new"
 
-  get "/reviews", to: "reviews#index"
-
   get "welcome/index"
 
   root "welcome#index"

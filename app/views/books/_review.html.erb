@@ -1,4 +1,5 @@
-<div class=" border border-secondary">
+<% @reviews.each do |review| %>
+<div>
     <div class="d-flex align-items-center">
 
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUGXkn6Eo8eeiFv7O-1QEaenXwr_EcqmxtnQ&usqp=CAU" alt="Avatar" class="avatar">
@@ -6,8 +7,15 @@
         <div class="text-dark">Khitish</div>
 
     </div>
-
-    <p class="review_comment fw-light text-secondary">Lorem ipsum dolor sit amet, 
-    consectetur adipiscing elit, sed do eiusmod tempor incididunt
-    ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+    <div>
+    <% review.rating.to_i.times do %>
+        <i class="fas fa-star"></i>
+    <% end %>
+    </div>
+    <p class = "review_comment fw-light text-secondary"><%= review.review %></p>
 </div>
+
+
+<% end %>
+
+

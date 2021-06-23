@@ -1,8 +1,25 @@
-<h2>Add a Review:</h2>
 
 <%= form_for @review, class: "d-flex align-items-center" do |f| %>
+  <%= f.hidden_field :book_id, value: "#{@id}" %>
+  <div>
+  <h5>Rate the book</h5>
+    <%= f.radio_button(:rating, "1") %>
+    <%= label_tag(:rating, "1") %>
+
+    <%= f.radio_button(:rating, "2") %>
+    <%= label_tag(:rating, "2") %>
+
+    <%= f.radio_button(:rating, "3") %>
+    <%= label_tag(:rating, "3") %>
+
+    <%= f.radio_button(:rating, "4") %>
+    <%= label_tag(:rating, "4") %>
+
+    <%= f.radio_button(:rating, "5") %>
+    <%= label_tag(:rating, "5") %>
+  </div>
   <p>
-    <%= f.text_area :review, class: "form-control me-2" %>
+    <%= f.text_area :review, required: true, placeholder: "Write a Review", class: "form-control me-2" %>
   </p>
   <p>
     <%= f.submit "post", class: "btn btn-outline-secondary" %>
