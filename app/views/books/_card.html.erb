@@ -1,8 +1,8 @@
 <% books_data.each do |book| %>
 
 
-<div class="col-lg-4 p-4 d-flex justify-content-center " >
-    <div class="card shadow" style="width: 18rem;">
+<div class="col-lg-4 p-4 d-flex justify-content-center">
+    <div class="card text-center shadow book_card" style="width: 18rem;">
 			<% if (book["cover_i"]) %>
                 <%= image_tag "http://covers.openlibrary.org/b/id/#{book["cover_i"]}-L.jpg", class: "card-img-top" %>
 			<% else %>
@@ -10,17 +10,20 @@
 			<% end %>	
         
     
-        <div class="card-body" style="border: red; height: auto;" >
+        <div class="card-body border-top" >
 
-                <h5 class="card-title">
+                <h6 class="card-title book_name">
                     <%= book["title"] %>
-                </h5>
-            <% if (book["isbn"]) %>
-                <%= link_to "Learn More", "/book#{book["key"]}/#{book["isbn"][0]}", class: "btn btn-secondary" %>
-            <% else %>
-                <%= link_to "Learn More", "/book#{book["key"]}", class: "btn btn-secondary" %>
-            <% end %>
+                </h6>
         </div>
+            <div class="card-footer bg-transparent border-0">
+                <% if (book["isbn"]) %>
+                    <%= link_to "Learn More", "/book#{book["key"]}/#{book["isbn"][0]}", class: "btn btn-secondary w-75" %>
+                <% else %>
+                    <%= button_to "Resource not available", "#", disabled: true, class: "btn btn-secondary disabled w-75" %>
+                <% end %>
+            </div>
+
     </div>
 </div>
 

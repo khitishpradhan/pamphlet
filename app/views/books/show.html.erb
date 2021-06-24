@@ -7,21 +7,31 @@
 				<%= image_tag "http://covers.openlibrary.org/b/id/#{@book["covers"][0]}-L.jpg", class: "book_image" %>
 			<% else %>
 				<%= image_tag "index.png", class: "book_image" %>
-			<% end %>	
-			<%= link_to "Preview", "#{@preview}", class: "btn btn-secondary preview_btn" %>
+			<% end %>
+
+			<% if (@preview) %>
+				<%= link_to "Preview", "#{@preview}", class: "btn btn-secondary preview_btn" %>
+			<% else %>
+				<%= button_to "Resource not available", "#", disabled: true, class: "btn btn-secondary disabled" %>
+			<% end %>
+
 		</div>
 		<div class="col-sm-9 p-2">
 			<h1><%= @book["title"] %></h1>
-			<h6>by <%= @author %>  </h6>
+			<% if (@author == []) %>
+				<h6>author information not available</h6>
+			<% else %>
+				<h6>by <%= render plain: @author %>  </h6>
+			<% end %>
 			<h2 class="text-secondary text-wrap">Overview</h2>
 
-
-			<% if (@book["description"]) %>
-				<%= @book["description"] %>
-			<% else %>
-				<%= render plain: "No Overview available" %>
-			<% end %>
-
+			<div class="overview">
+				<% if (@book["description"]) %>
+					<%= @book["description"] %>
+				<% else %>
+					<%= render plain: "No Overview available" %>
+				<% end %>
+			/div>		
 
 		</div>
 	</div>
@@ -31,13 +41,13 @@
 
 			<div>	
 				<% if (@reviews == []) %>
-					<h1>No Reviews</h1>
+					<h3>No Reviews</h3>
 				<% else %>
 					<%= render partial: "review" %>
 				<% end %>	
 			</div>
 
-			<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="review form">Add Review</button>
+			<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="review form">Add a Review</button>
 
 			<div class="collapse multi-collapse">
 			<%= render partial: "review_form" %>
@@ -47,11 +57,16 @@
 
 	</div>
 
-	<div class="row m-4">
+	<div class="row m-4 suggestions_card">
+
 		<% if (@suggestions == []) %>
 			<h1>No Suggestions</h1>
 		<% else %>
-			<%= render partial: "suggestions" %>
+			<h3>Here are some books written by <%= @author %> you might like</h3>
+			
+			<div class="card-group">
+				<%= render partial: "card", locals: { books_data: @suggestions } %>
+			</div>
 		<% end %>	
 
 	</div>
