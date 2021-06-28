@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.fa-star {
-    color: rgb(214, 184, 83);
+$star-rating-color: rgb(214, 184, 83);
+
+.star-rating {
+    color: $star-rating-color;
 }

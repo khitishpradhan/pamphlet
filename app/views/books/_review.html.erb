@@ -8,8 +8,8 @@
 
     </div>
     <div>
-    <% review.rating.to_i.times do %>
-        <i class="fas fa-star"></i>
+    <% review.rating.times do %>
+        <i class="fas fa-star star-rating"></i>
     <% end %>
     </div>
     <p class = "review_comment fw-light text-secondary"><%= review.review %></p>

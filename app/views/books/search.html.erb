@@ -1,6 +1,6 @@
 
 
-<div class="container ">
+<div class="container  ">
 
 <% if (@books.length != 0) %>
 
@@ -14,9 +14,15 @@
 
 
     <div class="row">
-    <div class="card-group">
-        
-        <%= render partial: "card", locals: { books_data: @books } %>
+    <div class="col" >
+        <div class="card-group">
+            
+        <% @books.each do |book| %>
+
+            <%= render partial: "card", locals: { book: book } %>
+
+        <% end %>
+    </div>
     </div>    
     </div>
 </div>

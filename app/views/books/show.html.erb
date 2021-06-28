@@ -18,7 +18,7 @@
 		</div>
 		<div class="col-sm-9 p-2">
 			<h1><%= @book["title"] %></h1>
-			<% if (@author == []) %>
+			<% if (@author == nil) %>
 				<h6>author information not available</h6>
 			<% else %>
 				<h6>by <%= render plain: @author %>  </h6>
@@ -35,41 +35,47 @@
 
 		</div>
 	</div>
-	<div class="row m-4">
-		<div class="border border-secondary p-2">
-			<h2>Reviews</h1>
 
-			<div>	
-				<% if (@reviews == []) %>
-					<h3>No Reviews</h3>
-				<% else %>
-					<%= render partial: "review" %>
-				<% end %>	
+		<div class="col-sm-12">
+			<div class="border border-secondary p-2">
+				<h2>Reviews</h1>
+
+				<div>	
+					<% if (@reviews == []) %>
+						<h3>No Reviews</h3>
+					<% else %>
+						<%= render partial: "review" %>
+					<% end %>	
+				</div>
+
+				<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="review form">Add a Review</button>
+
+				<div class="collapse multi-collapse">
+				<%= render partial: "review_form" %>
+				</div>	
 			</div>
 
-			<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="review form">Add a Review</button>
 
-			<div class="collapse multi-collapse">
-			<%= render partial: "review_form" %>
-			</div>	
+	</div>
 
+		<div class="colsm-12 suggestions_card">
+			<% if (@suggestions == nil) %>
+				<h1>No Suggestions</h1>
+			<% else %>
+				<h3>Here are some books written by <%= @author %> you might like</h3>
+				
+				<div class="card-group">
+
+				<% @suggestions.each do |book| %>
+
+					<%= render partial: "card", locals: { book: book } %>
+
+				<% end %>
+
+				</div>
+			<% end %>	
 		</div>
 
-	</div>
-
-	<div class="row m-4 suggestions_card">
-
-		<% if (@suggestions == []) %>
-			<h1>No Suggestions</h1>
-		<% else %>
-			<h3>Here are some books written by <%= @author %> you might like</h3>
-			
-			<div class="card-group">
-				<%= render partial: "card", locals: { books_data: @suggestions } %>
-			</div>
-		<% end %>	
-
-	</div>
 
 	
 
