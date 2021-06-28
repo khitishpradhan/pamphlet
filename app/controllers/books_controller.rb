@@ -1,9 +1,4 @@
 class BooksController < ApplicationController
-  require "net/http"
-  require "json"
-
-  Base_URL = "http://openlibrary.org/"
-
   def search
     @query = params[:query]
     books_response = GetbooksbyqueryService.call(params[:query])
