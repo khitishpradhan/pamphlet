@@ -1,8 +1,7 @@
 class BooksController < ApplicationController
   def search
     @query = params[:query]
-    books_response = GetbooksbyqueryService.call(params[:query])
-    @books = books_response["docs"]
+    @books = GetbooksbyqueryService.call(params[:query])
   end
 
   def show
