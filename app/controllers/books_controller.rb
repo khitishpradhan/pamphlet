@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    id = params[:id]
+    @id = params[:id]
 
     @review = Review.new
     @book = GetbookbyidService.call(params[:id])
@@ -22,6 +22,6 @@ class BooksController < ApplicationController
       @suggestions = GetbooksbyauthorService.call(@author)
     end
     @preview = author_response["ISBN:#{isbn}"]["preview_url"]
-    @reviews = Review.where(book_id: id)
+    @reviews = Review.where(book_id: @id)
   end
 end

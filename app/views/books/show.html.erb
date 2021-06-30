@@ -48,11 +48,38 @@
 					<% end %>	
 				</div>
 
-				<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="review form">Add a Review</button>
+				<% if user_signed_in? %>
 
-				<div class="collapse multi-collapse">
-				<%= render partial: "review_form" %>
-				</div>	
+					<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="review form">
+						Add a Review
+					</button>
+
+					<div class="collapse multi-collapse">
+					<%= render partial: "review_form" %>
+					</div>
+
+				<% else %>
+
+					<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#LogInModal">
+						Add a Review
+					</button>
+					
+					<div class="modal fade" id="LogInModal" tabindex="-1" aria-labelledby="LogInModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+							<h4 class="modal-title" id="LogInModalLabel">User Not Logged In</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<h5>To write a Review you must be Logged In first.</h5>
+								<%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
+							</div>
+						</div>
+						</div>
+					</div>
+
+				<% end %>
 			</div>
 
 

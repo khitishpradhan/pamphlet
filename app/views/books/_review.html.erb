@@ -3,9 +3,8 @@
     <div class="d-flex align-items-center">
 
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUGXkn6Eo8eeiFv7O-1QEaenXwr_EcqmxtnQ&usqp=CAU" alt="Avatar" class="avatar">
-        &nbsp; 
-        <div class="text-dark">Khitish</div>
-
+        &nbsp;
+        <div class="text-dark"><%= find_user(review.user_id) %></div>
     </div>
     <div>
     <% review.rating.times do %>
