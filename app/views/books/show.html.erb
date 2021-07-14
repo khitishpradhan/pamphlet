@@ -2,109 +2,18 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-3 d-flex flex-column justify-content-center align-items-center p-2">
-			<% if (@book["covers"]) %>
-				<%= image_tag "http://covers.openlibrary.org/b/id/#{@book["covers"][0]}-L.jpg", class: "book_image" %>
-			<% else %>
-				<%= image_tag "index.png", class: "book_image" %>
-			<% end %>
-
-			<% if (@preview) %>
-				<%= link_to "Preview", "#{@preview}", class: "btn btn-secondary preview_btn" %>
-			<% else %>
-				<%= button_to "Resource not available", "#", disabled: true, class: "btn btn-secondary disabled" %>
-			<% end %>
-
-		</div>
-		<div class="col-sm-9 p-2">
-			<h1><%= @book["title"] %></h1>
-			<% if (@author == nil) %>
-				<h6>author information not available</h6>
-			<% else %>
-				<h6>by <%= render plain: @author %>  </h6>
-			<% end %>
-			<h2 class="text-secondary text-wrap">Overview</h2>
-
-			<div class="overview">
-				<% if (@book["description"]) %>
-					<%= @book["description"] %>
-				<% else %>
-					<%= render plain: "No Overview available" %>
-				<% end %>
-			/div>		
-
-		</div>
-	</div>
-
-		<div class="col-sm-12">
-			<div class="border border-secondary p-2">
-				<h2>Reviews</h1>
-
-				<div>	
-					<% if (@reviews == []) %>
-						<h3>No Reviews</h3>
-					<% else %>
-						<%= render partial: "review" %>
-					<% end %>	
-				</div>
-
-				<% if user_signed_in? %>
-
-					<button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="review form">
-						Add a Review
-					</button>
-
-					<div class="collapse multi-collapse">
-					<%= render partial: "review_form" %>
-					</div>
-
-				<% else %>
-
-					<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#LogInModal">
-						Add a Review
-					</button>
-					
-					<div class="modal fade" id="LogInModal" tabindex="-1" aria-labelledby="LogInModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
-							<div class="modal-header">
-							<h4 class="modal-title" id="LogInModalLabel">User Not Logged In</h4>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">
-								<h5>To write a Review you must be Logged In first.</h5>
-								<%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
-							</div>
-						</div>
-						</div>
-					</div>
-
-				<% end %>
-			</div>
+		
+		<%= react_component("BookDetails", { book: @book, preview: @preview, author: @author }) %>
 
 
-	</div>
-
-		<div class="colsm-12 suggestions_card">
-			<% if (@suggestions == nil) %>
-				<h1>No Suggestions</h1>
-			<% else %>
-				<h3>Here are some books written by <%= @author %> you might like</h3>
-				
-				<div class="card-group">
-
-				<% @suggestions.each do |book| %>
-
-					<%= render partial: "card", locals: { book: book } %>
-
-				<% end %>
-
-				</div>
-			<% end %>	
-		</div>
+		
+	</div>	
 
 
-	
+		<%= react_component("Review", { Reviews: @reviews, userId: @current_user, bookId: @id }) %>
+
+		<%= react_component("Suggestions", { books: @suggestions, author: @author }) %>
+
 
 </div>
 

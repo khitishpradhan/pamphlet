@@ -22,6 +22,12 @@ class BooksController < ApplicationController
       @suggestions = GetbooksbyauthorService.call(@author)
     end
     @preview = author_response["ISBN:#{isbn}"]["preview_url"]
-    @reviews = Review.where(book_id: @id)
+    @reviews = Review.get_reviews_by_book(@id).as_json(:include => :user)
+
+    if (current_user)
+      @current_user = current_user.id
+    else
+      @current_user = nil
+    end
   end
 end

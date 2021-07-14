@@ -1,31 +1,8 @@
 
 
-<div class="container  ">
-
-<% if (@books.length != 0) %>
-
-    <h1>Showing results for "<%= @query %>" </h1>
-
-<% else %>
-
-    <h1>No results found <h1>
-
-<% end %>
+<%= react_component("SearchResults", { books: @books, query: @query }) %>
 
 
-    <div class="row">
-    <div class="col" >
-        <div class="card-group">
-            
-        <% @books.each do |book| %>
-
-            <%= render partial: "card", locals: { book: book } %>
-
-        <% end %>
-    </div>
-    </div>    
-    </div>
-</div>
 
 
 
