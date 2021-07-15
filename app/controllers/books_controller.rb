@@ -24,10 +24,5 @@ class BooksController < ApplicationController
     @preview = author_response["ISBN:#{isbn}"]["preview_url"]
     @reviews = Review.get_reviews_by_book(@id).as_json(:include => :user)
 
-    if (current_user)
-      @current_user = current_user.id
-    else
-      @current_user = nil
-    end
   end
 end

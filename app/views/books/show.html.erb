@@ -10,7 +10,7 @@
 	</div>	
 
 
-		<%= react_component("Review", { Reviews: @reviews, userId: @current_user, bookId: @id }) %>
+		<%= react_component("Review", { Reviews: @reviews, currentUser: current_user, bookId: @id }) %>
 
 		<%= react_component("Suggestions", { books: @suggestions, author: @author }) %>
 

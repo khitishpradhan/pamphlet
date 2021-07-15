@@ -12,7 +12,7 @@ const ReviewList = ({ reviews }) => {
               className="avatar"
             />
             &nbsp;
-            <div className="text-dark">{r.user.name}</div>
+            <div className="text-dark">{r.name || r.user.name}</div>
           </div>
           <div>
             {[...Array(parseInt(r.rating))].map((star, i) => (

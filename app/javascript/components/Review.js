@@ -3,15 +3,11 @@ import React, { useEffect, useState } from "react";
 import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
 
-const Review = ({ Reviews, userId, bookId }) => {
+const Review = ({ Reviews, currentUser, bookId }) => {
   const [reviews, setReviews] = useState(Reviews);
   const [rating, setRating] = useState(0);
-  const [currentUser, setCurrentUser] = useState();
 
 
-  useEffect(() => {
-    console.log("wow")
-  }, [reviews])
 
   return (
     <div className="border border-secondary p-2">
@@ -19,7 +15,7 @@ const Review = ({ Reviews, userId, bookId }) => {
 
       <ReviewList reviews={reviews} currentUser={currentUser} />
 
-      {userId ? (
+      {currentUser ? (
           <>
 
               <button className="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="review form">
@@ -32,14 +28,12 @@ const Review = ({ Reviews, userId, bookId }) => {
               <div className="collapse multi-collapse">
               
                   <ReviewForm
-                  userId={userId}
+                  currentUser={currentUser}
                   bookId={bookId}
                   setReviews={setReviews}
                   reviews={reviews}
                   rating={rating}
                   setRating={setRating}
-                  currentUser={currentUser}
-                  setCurrentUser={setCurrentUser}
                 />
               </div>
           </>
