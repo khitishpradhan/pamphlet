@@ -1,13 +1,14 @@
 import React from "react";
 
 const ReviewList = ({ reviews }) => {
+
   return (
     <>
       {reviews.map((r, i) => (
         <div key={i}>
           <div className="d-flex align-items-center">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUGXkn6Eo8eeiFv7O-1QEaenXwr_EcqmxtnQ&usqp=CAU"
+              src={"https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"}
               alt="Avatar"
               className="avatar"
             />

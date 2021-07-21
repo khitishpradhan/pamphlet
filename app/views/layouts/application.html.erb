@@ -16,8 +16,14 @@
     <%= render "welcome/navbar" %>
     
     <% if notice %>
+      <%= render "layouts/notice" %>
+    <% end %>
+
+    <% if alert %>
       <%= render "layouts/alerts" %>
     <% end %>
+
+
   <div class="container">
     <%= yield %>
   </div> 

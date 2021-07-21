@@ -1,7 +1,7 @@
 
 <%= form_for @review, class: "d-flex align-items-center" do |f| %>
   <%= f.hidden_field :book_id, value: "#{@id}" %>
-  <%= f.hidden_field :user_id, value: @current_user %>
+  <%= f.hidden_field :user_id, value: current_user %>
 
   <div>
   <h5>Rate the book</h5>

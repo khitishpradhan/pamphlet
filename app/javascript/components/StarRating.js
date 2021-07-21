@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-const StarRating = ({rating, setRating}) => {
+const StarRating = ({rating, handleRating}) => {
   
   const [hover, setHover] = useState(null);
 
   const handleClick = (e) => {
-    setRating(e.target.value)
+    handleRating(e.target.value)
   }
 
   return (

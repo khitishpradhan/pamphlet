@@ -7,7 +7,7 @@ const Card = ({book}) => {
 
 return (
     <div className="col-lg-4 p-4 d-flex justify-content-center">
-    <div className="card text-center shadow book_card" style={{width: "18rem"}}>
+    <div className="card text-center shadow book_card" style={{width: "100%"}}>
 
             {book.cover_i ? (
                 <img src={`http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`} className="card-img-top" />

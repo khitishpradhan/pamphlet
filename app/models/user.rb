@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_one_attached :avatar
 
+  # before_action :generate_avatar_url
+
   after_commit :add_default_avatar, on: %i[create update]
 
   # restrict only some attributes to be exported
@@ -18,6 +20,15 @@ class User < ApplicationRecord
       "/default_profile.jpeg"
     end
   end
+
+  def generate_avatar_url
+    if self.avatar.attached?
+      self.avatar_url = Rails.application.routes.url_helpers.polymorphic_url(self.avatar, only_path: true)
+    else
+      self.avatar_url = "/default_profile.jpeg"
+    end
+  end
+
 
   private
 

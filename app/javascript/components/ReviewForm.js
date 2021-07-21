@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StarRating from "./StarRating";
 
 const ReviewForm = ({ currentUser, bookId, setReviews, reviews, rating, setRating}) => {
@@ -11,6 +11,13 @@ const ReviewForm = ({ currentUser, bookId, setReviews, reviews, rating, setRatin
 
   const data = {"review":{"book_id" : `${bookId}`, "user_id" : `${currentUser.id}`, "review" : `${reviewComment}`, "rating": `${rating}` }}
 
+
+  const getInitialState = () => {
+    const rating = sessionStorage.getItem("rating") || 0;
+    const reviewComment = sessionStorage.getItem("reviewComment") || "";
+    setRating(rating)
+    setReviewComment(reviewComment)
+  }
 
   const handleSubmit = (e) => {
 
@@ -34,8 +41,25 @@ const ReviewForm = ({ currentUser, bookId, setReviews, reviews, rating, setRatin
 
     setReviewComment("")
     setRating(0)
+    sessionStorage.clear()
 
   }
+
+  const handleRating = (rating) => {
+    sessionStorage.setItem("rating", rating)
+    setRating(rating)
+  }
+
+  const handleReviewComment = (e) => {
+    sessionStorage.setItem("reviewComment", e.target.value)
+    console.log(e.target.value)
+    setReviewComment(e.target.value)
+  }
+
+
+  useEffect(() =>{
+    getInitialState();
+  })
 
 
   return (
@@ -60,7 +84,7 @@ const ReviewForm = ({ currentUser, bookId, setReviews, reviews, rating, setRatin
           name="review[user_id]"
         />
 
-        <StarRating rating={rating} setRating={setRating} />
+        <StarRating rating={rating} handleRating={handleRating} />
         <br/>
 
         <textarea
@@ -68,7 +92,7 @@ const ReviewForm = ({ currentUser, bookId, setReviews, reviews, rating, setRatin
           placeholder="Write a Review"
           name="review[review]"
           value={reviewComment}
-          onChange={(e) => setReviewComment(e.target.value)}
+          onChange={handleReviewComment}
         />
         <br />
         <input

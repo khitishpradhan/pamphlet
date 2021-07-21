@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
@@ -9,11 +9,12 @@ const Review = ({ Reviews, currentUser, bookId }) => {
 
 
 
+
   return (
     <div className="border border-secondary p-2">
       <h2>Reviews</h2>
 
-      <ReviewList reviews={reviews} currentUser={currentUser} />
+      <ReviewList reviews={reviews} currentUser={currentUser}  />
 
       {currentUser ? (
           <>

@@ -8,12 +8,12 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field mb-3">
-      <%= image_tag(resource.avatar_thumbnail) if resource.avatar.attached? %>
+      <%= image_tag(resource.avatar_thumbnail ,  class:"rounded-circle") if resource.avatar.attached? %>
     </div>
 
     <div class="field mb-3">
-    <%= f.file_field :avatar, class: "form-control" %>
-  </div>
+      <%= f.file_field :avatar, class: "form-control" %>
+    </div>
 
     <div class="field mb-3">
       <%= f.label :name %><br />
@@ -45,7 +45,7 @@
 
     <div class="field mb-3">
       <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+      <%= f.password_field :current_password, autocomplete: "current-password", required:true, class: "form-control" %>
     </div>
 
     <div class="actions mb-3">
