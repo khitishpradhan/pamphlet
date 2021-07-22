@@ -1,20 +1,23 @@
 <% @reviews.each do |review| %>
-<div>
-    <div class="d-flex align-items-center">
-
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUGXkn6Eo8eeiFv7O-1QEaenXwr_EcqmxtnQ&usqp=CAU" alt="Avatar" class="avatar">
-        &nbsp;
-        <div class="text-dark"><%= find_user(review.user_id) %></div>
-    </div>
     <div>
-    <% review.rating.times do %>
-        <i class="fas fa-star star-rating"></i>
-    <% end %>
+        <div class="d-flex align-items-center">
+
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUGXkn6Eo8eeiFv7O-1QEaenXwr_EcqmxtnQ&usqp=CAU"
+                alt="Avatar" class="avatar">
+            &nbsp;
+            <div class="text-dark">
+                <%= find_user(review.user_id) %>
+            </div>
+        </div>
+        <div>
+            <% review.rating.times do %>
+                <i class="fas fa-star star-rating"></i>
+                <% end %>
+        </div>
+        <p class="review_comment fw-light text-secondary">
+            <%= review.review %>
+        </p>
     </div>
-    <p class = "review_comment fw-light text-secondary"><%= review.review %></p>
-</div>
 
 
-<% end %>
-
-
+    <% end %>

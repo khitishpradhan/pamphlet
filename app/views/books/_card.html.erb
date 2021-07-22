@@ -1,29 +1,27 @@
-
 <div class="col-lg-4 p-4 d-flex justify-content-center">
     <div class="card text-center shadow book_card" style="width: 18rem;">
-			<% if (book["cover_i"]) %>
-                <%= image_tag "http://covers.openlibrary.org/b/id/#{book["cover_i"]}-L.jpg", class: "card-img-top" %>
-			<% else %>
-				<%= image_tag "index.png", class: "card-img-top" %>
-			<% end %>	
-
-    
-        <div class="card-body border-top" >
-
-                <h6 class="card-title book_name">
-                    <%= book["title"] %>
-                </h6>
-        </div>
-            <div class="card-footer bg-transparent border-0">
-                <% if (book["isbn"]) %>
-                    <%= link_to "Learn More", "/book#{book["key"]}/#{book["isbn"][0]}", class: "btn btn-secondary w-75" %>
+        <% if (book["cover_i"]) %>
+            <%= image_tag "http://covers.openlibrary.org/b/id/#{book[" cover_i"]}-L.jpg", class: "card-img-top" %>
                 <% else %>
-                    <%= button_to "Resource not available", "#", disabled: true, class: "btn btn-secondary disabled w-75" %>
-                <% end %>
-            </div>
+                    <%= image_tag "index.png" , class: "card-img-top" %>
+                        <% end %>
+
+
+                            <div class="card-body border-top">
+
+                                <h6 class="card-title book_name">
+                                    <%= book["title"] %>
+                                </h6>
+                            </div>
+                            <div class="card-footer bg-transparent border-0">
+                                <% if (book["isbn"]) %>
+                                    <%= link_to "Learn More" , "/book#{book[" key"]}/#{book["isbn"][0]}",
+                                        class: "btn btn-secondary w-75" %>
+                                        <% else %>
+                                            <%= button_to "Resource not available" , "#" , disabled: true,
+                                                class: "btn btn-secondary disabled w-75" %>
+                                                <% end %>
+                            </div>
 
     </div>
 </div>
-
-
-
