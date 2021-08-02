@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
 
-const Review = ({ Reviews, currentUser, bookId }) => {
-  const [reviews, setReviews] = useState(Reviews);
+const Review = ({ reviewComments, currentUser, bookId }) => {
+  const [reviews, setReviews] = useState(reviewComments);
   const [rating, setRating] = useState(0);
 
 

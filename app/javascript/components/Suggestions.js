@@ -6,7 +6,7 @@ const Suggestions = ({books, author}) => {
 
     return (
         <div className="col-sm-12 suggestions_card">
-            {books? (
+            {books.length !==0 ? (
                 <>
                     <h3>{`Here are some books written by ${author} you might like`}</h3>
 

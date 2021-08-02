@@ -5,11 +5,11 @@ import Card from "./Card"
 
 const SearchResults = ({books, query}) => {
     return (
-        <div className= "container" >
+        <div className= "container text-center" >
 
-            {books? (
+            {books.length !==0 ? (
                 <>
-                    <h1>{`Showing results for ${query}`}</h1>
+                    <h1>{`Showing results for "${query}"`}</h1>
 
                     <div className="row">
                         <div className="col" >

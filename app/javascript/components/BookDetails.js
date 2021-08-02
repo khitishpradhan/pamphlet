@@ -18,7 +18,7 @@ const BookDetails = ({book, preview, author}) => {
 
 		   {preview? (
 			   <div>
-			   		<a href={`#${preview}`} className="btn btn-secondary preview_btn">Preview</a>
+			   		<a href={`${preview}`} className="btn btn-secondary preview_btn">Preview</a>
 			   </div>
 		   ) : (
 			<button className="btn btn-secondary preview_btn disabled" href="#" disabled={true}>Resource not available</button>
