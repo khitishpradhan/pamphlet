@@ -1,4 +1,3 @@
-import { Alert } from "bootstrap";
 import React, { useState, useEffect } from "react";
 import StarRating from "./StarRating";
 
@@ -24,17 +23,9 @@ const ReviewForm = ({ currentUser, bookId, setReviews, reviews, rating, setRatin
 
     e.preventDefault()
 
-    if(rating == 0) {
-      alert("rating cannot be empty!")
-
-      return false
-    }
-
-    if(reviewComment == '') {
-      alert("Text field cannot be empty!")
-      
-      return false
-    }
+    if(rating==0) {
+          console.log("null rating")
+    } 
 
     fetch("/reviews",{
       method: "POST",
@@ -105,6 +96,7 @@ const ReviewForm = ({ currentUser, bookId, setReviews, reviews, rating, setRatin
           name="review[review]"
           value={reviewComment}
           onChange={handleReviewComment}
+          required
         />
         <br />
         <input

@@ -1,16 +1,10 @@
 <div class="container-fluid">
 	<div class="row">
 
-		<%= react_component("BookDetails", { book: @book, preview: @preview, author: @author }) %>
+		<%= react_component("BookDetails", { book: @book, preview: @preview, author: @author, books: @suggestions, reviewComments: @reviews, currentUser: current_user, bookId: @id }) %>
 
 
 
 	</div>
-
-
-	<%= react_component("Review", { reviewComments: @reviews, currentUser: current_user, bookId: @id }) %>
-
-		<%= react_component("Suggestions", { books: @suggestions, author: @author }) %>
-
 
 </div>

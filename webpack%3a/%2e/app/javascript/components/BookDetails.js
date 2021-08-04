@@ -8,10 +8,12 @@ import Suggestions from "./Suggestions"
 
 
 const BookDetails = ({book, preview, author, books, reviewComments, currentUser, bookId}) => {
-
+    
+    console.log(books)
  
-    const books_suggest = books.filter(b => b.title != book.title ).slice(1,4) 
+     const books_suggest = books.filter(b => b.title != book.title )   
 
+     console.log(books_suggest)
     return (
     <div className="row">
 		<div className="col-sm-3 d-flex flex-column justify-content-center text-center py-2">
@@ -50,7 +52,7 @@ const BookDetails = ({book, preview, author, books, reviewComments, currentUser,
 
 		</div>
 		<Review reviewComments={reviewComments} currentUser={currentUser} bookId={bookId} />
-		<Suggestions author={author} books={books_suggest}/>
+		<Suggestions author={author} books={books}/>
 	</div>
     )
 
