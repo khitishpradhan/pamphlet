@@ -3,8 +3,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
 
     @review.save
-
-    redirect_to request.referrer
   end
 
   private

@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "/books", to: "books#search"
+  get '/books', to: 'books#search'
 
-  get "/book/works/:id/:isbn", to: "books#show"
+  get '/book/works/:id/:isbn', to: 'books#show'
 
-  post "/reviews", to: "reviews#new"
+  post '/reviews', to: 'reviews#new'
 
-  get "welcome/index"
+  get '/users', to: redirect('/users/edit')
 
-  root "welcome#index"
+  get 'welcome/index'
+
+  root 'welcome#index'
 end

@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-$star-rating-color: rgb(214, 184, 83);
+$star-rating-color: #d6b853;
 
 .star-rating {
     color: $star-rating-color;
+}
+
+
+.starRadio {
+    display: none;
 }

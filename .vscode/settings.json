@@ -1,3 +1,16 @@
 {
-    "editor.defaultFormatter": "jnbt.vscode-rufo"
+    "editor.defaultFormatter": "jnbt.vscode-rufo",
+    "files.associations": {
+        "*.html.erb": "html"
+      },
+      "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+      },
+      "editor.formatOnSave": false,
+      "solargraph.autoformat": true,
+      "solargraph.diagnostics": true,
+      "solargraph.formatting": true,
+      "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
 }

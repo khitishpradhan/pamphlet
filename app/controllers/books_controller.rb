@@ -12,16 +12,16 @@ class BooksController < ApplicationController
 
     isbn = params[:isbn]
     author_response = GetauthorbyisbnService.call(params[:isbn])
-    author_json = author_response["ISBN:#{isbn}"]["details"]["authors"]
+    author_json = author_response["ISBN:#{isbn}"]['details']['authors']
 
-    if (author_json == nil)
+    if author_json == nil
       @suggestions = nil
       @author = nil
     else
-      @author = author_json[0]["name"]
+      @author = author_json[0]['name']
       @suggestions = GetbooksbyauthorService.call(@author)
     end
-    @preview = author_response["ISBN:#{isbn}"]["preview_url"]
-    @reviews = Review.where(book_id: @id)
+    @preview = author_response["ISBN:#{isbn}"]['preview_url']
+    @reviews = Review.get_reviews_by_book(@id).as_json(include: :user)
   end
 end

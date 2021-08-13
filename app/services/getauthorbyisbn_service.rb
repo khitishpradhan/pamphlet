@@ -2,8 +2,6 @@ class GetauthorbyisbnService < ApplicationService
   require "net/http"
   require "json"
 
-  Base_URL = "http://openlibrary.org/"
-
   attr_reader :isbn
 
   def initialize(isbn)
@@ -11,7 +9,7 @@ class GetauthorbyisbnService < ApplicationService
   end
 
   def call
-    url = url = "#{Base_URL}api/books?bibkeys=ISBN:#{@isbn}&jscmd=details&format=json"
+    url = url = "#{Rails.application.config.OpenLib_URL}api/books?bibkeys=ISBN:#{@isbn}&jscmd=details&format=json"
     uri = URI(url)
     response = Net::HTTP.get(uri)
     author = JSON.parse(response)
